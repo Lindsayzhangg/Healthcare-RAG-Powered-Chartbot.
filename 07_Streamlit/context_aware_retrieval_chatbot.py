@@ -1,4 +1,3 @@
-
 import streamlit as st
 from langchain_voyageai import VoyageAIEmbeddings
 import os
@@ -35,8 +34,72 @@ from dotenv import load_dotenv
 warnings.filterwarnings("ignore")
 
 # Set up Streamlit app
-st.set_page_config(page_title="Custom Chatbot", layout="wide")
-st.title("Custom Chatbot with Retrieval Abilities")
+st.set_page_config(page_title="Patient Chatbot", layout="wide", initial_sidebar_state="collapsed")
+st.markdown(
+        """
+    <style>
+    .main {
+        background-color: #f0f8ff;
+        color: #2f4f4f;
+        font-family: 'Arial', sans-serif;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .stButton>button:hover,
+    .stButton>button:active,
+    .stButton>button:focus {
+        background-color: #1e90ff; /* 将鼠标悬停和点击时的背景色改为蓝色 */
+        color: white !important; /* 将鼠标悬停和点击时的文字颜色改为白色 */
+    }
+    .stTextInput>div>div>input {
+        background-color: #f8f8f8;
+        color: #2f4f4f;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid #4CAF50;
+    }
+    .stTextInput>div>div>input:focus {
+        border: 2px solid #1e90ff !important; 
+        box-shadow: none !important; 
+    }
+
+    .stDownloadButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .stDownloadButton>button:hover,
+    .stDownloadButton>button:active,
+    .stDownloadButton>button:focus {
+        background-color: #1e90ff; 
+        color: white !important; /* 确保点击后文字颜色为白色 */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.title("Patient Chatbot with Retrieval Abilities")
 
 # Function to generate pre-signed URL
 def generate_presigned_url(s3_client, s3_uri):
