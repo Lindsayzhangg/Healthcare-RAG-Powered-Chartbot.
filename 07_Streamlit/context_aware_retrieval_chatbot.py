@@ -59,8 +59,8 @@ st.markdown(
     .stButton>button:hover,
     .stButton>button:active,
     .stButton>button:focus {
-        background-color: #1e90ff; /* 将鼠标悬停和点击时的背景色改为蓝色 */
-        color: white !important; /* 将鼠标悬停和点击时的文字颜色改为白色 */
+        background-color: #1e90ff; 
+        color: white !important; 
     }
     .stTextInput>div>div>input {
         background-color: #f8f8f8;
@@ -92,14 +92,18 @@ st.markdown(
     .stDownloadButton>button:active,
     .stDownloadButton>button:focus {
         background-color: #1e90ff; 
-        color: white !important; /* 确保点击后文字颜色为白色 */
+        color: white !important; 
+    }
+    .custom-title {
+        color: grey; /* Change the title font color to grey */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.title("Patient Chatbot with Retrieval Abilities")
+# Custom title
+st.markdown("<h1 class='custom-title'>Hello! How Can I Assist You Today? 😊</h1>", unsafe_allow_html=True)
 
 # Function to generate pre-signed URL
 def generate_presigned_url(s3_client, s3_uri):
